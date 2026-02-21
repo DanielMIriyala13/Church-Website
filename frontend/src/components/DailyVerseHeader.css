@@ -1,0 +1,201 @@
+/* ============================================
+   DAILY VERSE HEADER - SACRED COMPACT PILL UI
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Ponnala&family=Noto+Serif+Telugu:wght@400;500;600&family=Cinzel:wght@600&display=swap');
+
+/* ============================================
+   CONTAINER
+   ============================================ */
+.daily-verse-section {
+    position: relative;
+    width: 100%;
+    z-index: 990;
+    padding: 1rem 0 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--sacred-gradient);
+    /* Restored background since it might be outside hero */
+}
+
+/* Background Glow */
+.verse-glow-effect {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 100px;
+    background: radial-gradient(ellipse at center,
+            rgba(212, 175, 55, 0.12) 0%,
+            rgba(212, 175, 55, 0.03) 50%,
+            transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+    filter: blur(40px);
+}
+
+/* ============================================
+   CARD CONTAINER (PILL SHAPE)
+   ============================================ */
+.verse-card-container {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 50px;
+    padding: 0.5rem 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+    width: auto;
+
+    /* Cinematic Entrance */
+    animation:
+        slideUpFade 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards,
+        sacredPulse 4s ease-in-out infinite;
+
+    transition: transform 0.5s ease, background 0.5s ease;
+}
+
+.verse-card-container:hover {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(212, 175, 55, 0.5);
+}
+
+@keyframes slideUpFade {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Sacred Glow Pulse (Subtle) */
+@keyframes sacredPulse {
+
+    0%,
+    100% {
+        box-shadow:
+            0 4px 20px rgba(0, 0, 0, 0.04),
+            0 2px 8px rgba(212, 175, 55, 0.08);
+    }
+
+    50% {
+        box-shadow:
+            0 8px 30px rgba(212, 175, 55, 0.15),
+            0 4px 12px rgba(212, 175, 55, 0.12);
+    }
+}
+
+/* ============================================
+   HEADER LABEL
+   ============================================ */
+.verse-header-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding-right: 1.5rem;
+    border-right: 1px solid rgba(255, 255, 255, 0.3);
+    white-space: nowrap;
+}
+
+.label-text {
+    font-family: 'Cinzel', serif;
+    font-size: 0.8rem;
+    color: #FCD34D;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 700;
+}
+
+.label-icon {
+    font-size: 0.7rem;
+    color: #FCD34D;
+}
+
+/* ============================================
+   CONTENT BODY
+   ============================================ */
+.verse-content-body {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-align: left;
+}
+
+.verse-scripture {
+    font-family: 'Noto Serif Telugu', serif;
+    font-size: 1.1rem;
+    color: #F8FAFC;
+    font-weight: 500;
+    margin: 0;
+    line-height: 1;
+}
+
+.verse-separator {
+    display: none;
+    width: 2px;
+    height: 15px;
+    background: #CBD5E1;
+}
+
+.verse-reference {
+    font-family: 'Ponnala', sans-serif;
+    font-size: 0.9rem;
+    color: #CBD5E1;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.verse-reference::before {
+    content: '—';
+    margin-right: 0.3rem;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+@media (max-width: 768px) {
+    .daily-verse-section {
+        padding: 1rem 1rem 0.5rem;
+    }
+
+    .verse-card-container {
+        flex-direction: column;
+        padding: 1rem 1.5rem;
+        border-radius: 20px;
+        gap: 0.5rem;
+        width: 100%;
+    }
+
+    .verse-header-label {
+        border-right: none;
+        padding-right: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        padding-bottom: 0.5rem;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .verse-content-body {
+        flex-direction: column;
+        gap: 0.3rem;
+        text-align: center;
+    }
+
+    .verse-scripture {
+        font-size: 1.1rem;
+        line-height: 1.4;
+    }
+}

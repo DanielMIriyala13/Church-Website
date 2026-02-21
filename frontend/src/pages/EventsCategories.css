@@ -1,0 +1,146 @@
+/* Section Groups */
+.section-group {
+    position: relative;
+    /* Ensure groups stack nicely */
+    margin-bottom: 2rem;
+}
+
+/* =========================================
+   Current Events Section (Happening Today) 
+   ========================================= */
+
+/* Highlight Container */
+.current-event-highlight {
+    position: relative;
+    z-index: 10;
+}
+
+/* Enhanced Highlight Card */
+.current-event-highlight .event-content {
+    background: linear-gradient(135deg,
+            rgba(255, 252, 245, 0.95) 0%,
+            rgba(255, 248, 240, 0.98) 100%);
+    border: 2px solid rgba(212, 175, 55, 0.6);
+    box-shadow:
+        0 0 40px rgba(212, 175, 55, 0.25),
+        0 12px 32px rgba(212, 175, 55, 0.15);
+    transform: scale(1.02);
+}
+
+/* Sacred Glow Animation */
+.current-event-highlight .event-content::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 25px;
+    background: linear-gradient(45deg,
+            transparent,
+            rgba(212, 175, 55, 0.3),
+            transparent);
+    z-index: -1;
+    animation: sacredBorderFlow 3s linear infinite;
+}
+
+@keyframes sacredBorderFlow {
+    0% {
+        opacity: 0.5;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.5;
+    }
+}
+
+/* Badge Pulse Animation */
+.badge-pulse {
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+    animation: badgePulse 2s infinite;
+}
+
+@keyframes badgePulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.7);
+    }
+
+    70% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 10px rgba(255, 215, 0, 0);
+    }
+
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255, 215, 0, 0);
+    }
+}
+
+/* Date Circle for Current Event */
+.current-event-highlight .event-date-circle {
+    background: linear-gradient(135deg, #D4AF37 0%, #FFDF80 100%);
+    box-shadow: 0 0 25px rgba(212, 175, 55, 0.6);
+    animation: sunGlow 3s infinite alternate;
+}
+
+@keyframes sunGlow {
+    from {
+        box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+    }
+
+    to {
+        box-shadow: 0 0 40px rgba(212, 175, 55, 0.8);
+    }
+}
+
+/* =========================================
+   Recent Events Section (Past/Completed) 
+   ========================================= */
+
+/* Dimmed Container */
+.recent-event-dim {
+    opacity: 0.85;
+    transition: opacity 0.3s ease;
+    filter: saturate(0.8);
+}
+
+.recent-event-dim:hover {
+    opacity: 1;
+    filter: saturate(1);
+}
+
+/* Grayed/Muted Card */
+.recent-event-dim .event-content {
+    background: rgba(245, 245, 250, 0.6);
+    /* Cooler, greyer background */
+    border-color: rgba(100, 100, 100, 0.1);
+    box-shadow: none;
+}
+
+.recent-event-dim .event-title {
+    color: var(--royal-blue);
+    /* Less intense than deep-purple */
+    opacity: 0.9;
+}
+
+.recent-event-dim .event-subtitle {
+    color: #8a8a8a;
+    /* Muted gold */
+}
+
+/* Past Badge */
+.recent-event-dim .event-badge {
+    background: #7a7a7a;
+    /* Neutral gray */
+    box-shadow: none;
+    top: -10px;
+}
+
+/* Muted Date Circle */
+.recent-event-dim .event-date-circle {
+    background: linear-gradient(135deg, #718096 0%, #A0AEC0 100%);
+    box-shadow: none;
+}

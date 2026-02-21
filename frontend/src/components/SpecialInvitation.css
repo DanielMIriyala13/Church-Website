@@ -1,0 +1,196 @@
+/* ============================================
+   SPECIAL INVITATION - SACRED PREMIUM UI
+   ============================================ */
+
+/* ============================================
+   SECTION CONTAINER
+   ============================================ */
+.special-invitation-section {
+    position: relative;
+    padding: 6rem 2rem;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.special-invitation-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Background Glow */
+.invitation-gold-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1000px;
+    height: 800px;
+    background: radial-gradient(ellipse,
+            rgba(212, 175, 55, 0.12) 0%,
+            rgba(212, 175, 55, 0.06) 40%,
+            rgba(212, 175, 55, 0.02) 70%,
+            transparent 100%);
+    filter: blur(80px);
+    pointer-events: none;
+    z-index: 0;
+    animation: glowPulseSlow 6s ease-in-out infinite;
+}
+
+@keyframes glowPulseSlow {
+
+    0%,
+    100% {
+        opacity: 0.6;
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    50% {
+        opacity: 0.8;
+        transform: translate(-50%, -50%) scale(1.05);
+    }
+}
+
+/* ============================================
+   CONTAINER
+   ============================================ */
+.special-invitation-container {
+    position: relative;
+    z-index: 1;
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* ============================================
+   HEADER
+   ============================================ */
+.invitation-header {
+    margin-bottom: 3rem;
+}
+
+.invitation-title {
+    font-family: 'Cinzel', serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #1E3A8A 0%, #4C1D95 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.gold-divider-small {
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #D4AF37, transparent);
+    margin: 0 auto 1.5rem;
+    border-radius: 2px;
+}
+
+.invitation-subtitle {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    color: #4C1D95;
+    font-weight: 400;
+    font-style: italic;
+}
+
+/* ============================================
+   INVITATION CARD
+   ============================================ */
+.invitation-card {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 1.5rem;
+    box-shadow:
+        0 15px 40px rgba(212, 175, 55, 0.15),
+        0 0 60px rgba(212, 175, 55, 0.08);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.invitation-card:hover {
+    transform: translateY(-5px);
+    box-shadow:
+        0 20px 60px rgba(212, 175, 55, 0.2),
+        0 0 80px rgba(212, 175, 55, 0.15);
+    border-color: rgba(212, 175, 55, 0.6);
+}
+
+/* ============================================
+   IMAGE WRAPPER
+   ============================================ */
+.invitation-img-wrapper {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.invitation-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.8s ease;
+}
+
+.invitation-card:hover .invitation-img {
+    transform: scale(1.03);
+}
+
+/* Shine Effect */
+.invitation-shine {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to right,
+            rgba(255, 255, 255, 0) 0%,
+            rgba(255, 255, 255, 0.3) 50%,
+            rgba(255, 255, 255, 0) 100%);
+    transform: skewX(-25deg);
+    transition: left 0.8s ease;
+}
+
+.invitation-card:hover .invitation-shine {
+    left: 200%;
+    transition: left 1s ease;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+@media (max-width: 768px) {
+    .special-invitation-section {
+        padding: 4rem 1.5rem;
+    }
+
+    .invitation-title {
+        font-size: 1.8rem;
+    }
+
+    .invitation-subtitle {
+        font-size: 1.1rem;
+    }
+
+    .invitation-card {
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .invitation-title {
+        font-size: 1.5rem;
+    }
+
+    .special-invitation-section {
+        padding: 3rem 1rem;
+    }
+}

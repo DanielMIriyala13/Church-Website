@@ -1,0 +1,365 @@
+/* ============================================
+   DAILY BIBLE VERSE WIDGET - PREMIUM SACRED UI
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Playfair+Display:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap');
+
+/* ============================================
+   SECTION CONTAINER
+   ============================================ */
+.daily-verse-section {
+    position: relative;
+    padding: 4rem 2rem;
+    overflow: hidden;
+}
+
+/* Background Glow */
+.verse-glow-bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px;
+    height: 600px;
+    background: radial-gradient(ellipse,
+            rgba(212, 175, 55, 0.12) 0%,
+            rgba(212, 175, 55, 0.06) 40%,
+            rgba(212, 175, 55, 0.02) 70%,
+            transparent 100%);
+    filter: blur(60px);
+    pointer-events: none;
+    z-index: 0;
+    animation: verseGlowPulse 6s ease-in-out infinite;
+}
+
+@keyframes verseGlowPulse {
+
+    0%,
+    100% {
+        opacity: 0.5;
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    50% {
+        opacity: 0.8;
+        transform: translate(-50%, -50%) scale(1.05);
+    }
+}
+
+/* ============================================
+   VERSE CONTAINER
+   ============================================ */
+.verse-container {
+    position: relative;
+    z-index: 1;
+    max-width: 700px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 25px;
+    border: 2px solid transparent;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)),
+        linear-gradient(135deg, rgba(212, 175, 55, 0.4) 0%, rgba(212, 175, 55, 0.2) 100%);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    padding: 2.5rem;
+    box-shadow:
+        0 8px 32px rgba(212, 175, 55, 0.15),
+        0 0 40px rgba(212, 175, 55, 0.08),
+        inset 0 0 30px rgba(255, 255, 255, 0.3);
+    animation: fadeInUp 1s ease-out;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.verse-container:hover {
+    transform: translateY(-4px);
+    box-shadow:
+        0 12px 48px rgba(212, 175, 55, 0.2),
+        0 0 60px rgba(212, 175, 55, 0.12),
+        inset 0 0 40px rgba(255, 255, 255, 0.4);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Subtle texture overlay */
+.verse-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image:
+        repeating-linear-gradient(45deg,
+            transparent,
+            transparent 2px,
+            rgba(212, 175, 55, 0.02) 2px,
+            rgba(212, 175, 55, 0.02) 4px);
+    border-radius: 25px;
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+/* ============================================
+   HEADER
+   ============================================ */
+.verse-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.verse-icon {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #D4AF37 0%, #B8941E 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+    flex-shrink: 0;
+}
+
+.verse-icon svg {
+    width: 22px;
+    height: 22px;
+}
+
+.verse-title {
+    font-family: 'Cinzel', serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    background: linear-gradient(135deg, #1E3A8A 0%, #4C1D95 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+/* Refresh Button */
+.refresh-btn {
+    width: 36px;
+    height: 36px;
+    background: rgba(212, 175, 55, 0.1);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #D4AF37;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+    margin-left: auto;
+}
+
+.refresh-btn svg {
+    width: 20px;
+    height: 20px;
+}
+
+.refresh-btn:hover {
+    background: rgba(212, 175, 55, 0.2);
+    border-color: #D4AF37;
+    transform: rotate(180deg);
+    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+}
+
+.refresh-btn:active {
+    transform: rotate(180deg) scale(0.95);
+}
+
+/* ============================================
+   VERSE CONTENT
+   ============================================ */
+.verse-content {
+    position: relative;
+    text-align: center;
+}
+
+.verse-quote-icon {
+    font-family: 'Playfair Display', serif;
+    font-size: 6rem;
+    font-weight: 700;
+    color: rgba(212, 175, 55, 0.15);
+    line-height: 0;
+    margin-bottom: 1rem;
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    pointer-events: none;
+}
+
+.verse-text {
+    font-family: 'Crimson Text', serif;
+    font-size: 1.4rem;
+    line-height: 1.8;
+    color: #1E3A8A;
+    font-weight: 400;
+    font-style: italic;
+    margin: 0 0 1.5rem 0;
+    position: relative;
+    z-index: 1;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+.verse-reference {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #D4AF37;
+    margin: 0;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    position: relative;
+}
+
+.verse-reference::before {
+    content: '';
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg,
+            transparent 0%,
+            #D4AF37 50%,
+            transparent 100%);
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+@media (max-width: 768px) {
+    .daily-verse-section {
+        padding: 3rem 1.5rem;
+    }
+
+    .verse-container {
+        padding: 2rem 1.5rem;
+    }
+
+    .verse-title {
+        font-size: 1.1rem;
+    }
+
+    .verse-text {
+        font-size: 1.2rem;
+        line-height: 1.7;
+    }
+
+    .verse-reference {
+        font-size: 0.9rem;
+    }
+
+    .verse-quote-icon {
+        font-size: 4rem;
+        top: -15px;
+    }
+
+    .verse-header {
+        gap: 0.75rem;
+    }
+
+    .verse-icon {
+        width: 36px;
+        height: 36px;
+    }
+
+    .verse-icon svg {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .verse-container {
+        padding: 1.75rem 1.25rem;
+    }
+
+    .verse-title {
+        font-size: 1rem;
+    }
+
+    .verse-text {
+        font-size: 1.1rem;
+    }
+
+    .verse-reference {
+        font-size: 0.85rem;
+    }
+
+    .verse-quote-icon {
+        font-size: 3.5rem;
+    }
+
+    .refresh-btn {
+        width: 32px;
+        height: 32px;
+    }
+
+    .refresh-btn svg {
+        width: 18px;
+        height: 18px;
+    }
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+.refresh-btn:focus-visible {
+    outline: 2px solid #D4AF37;
+    outline-offset: 3px;
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+
+    .verse-glow-bg,
+    .verse-container,
+    .refresh-btn {
+        animation: none !important;
+        transition: none !important;
+    }
+
+    .refresh-btn:hover {
+        transform: none !important;
+    }
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+@media print {
+
+    .verse-glow-bg,
+    .refresh-btn {
+        display: none;
+    }
+
+    .verse-container {
+        box-shadow: none;
+        border: 1px solid #D4AF37;
+    }
+}

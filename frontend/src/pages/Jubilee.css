@@ -1,0 +1,274 @@
+.jubilee {
+    min-height: 100vh;
+    background: var(--sacred-gradient);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Decorative Background */
+.jubilee::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image:
+        radial-gradient(circle at 10% 20%, rgba(212, 175, 55, 0.1) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(196, 122, 109, 0.1) 0%, transparent 40%),
+        radial-gradient(circle at 50% 50%, rgba(250, 246, 240, 0.05) 0%, transparent 60%);
+    animation: backgroundPulse 15s ease-in-out infinite;
+}
+
+@keyframes backgroundPulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.7;
+    }
+}
+
+.jubilee-container {
+    position: relative;
+    z-index: 1;
+    padding: 8rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.jubilee h1 {
+    font-family: var(--font-display);
+    font-size: 4.5rem;
+    text-align: center;
+    color: var(--warm-ivory);
+    margin-bottom: 1rem;
+    text-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+    letter-spacing: -0.5px;
+}
+
+.jubilee-subtitle {
+    text-align: center;
+    font-family: var(--font-alt);
+    font-size: 1.5rem;
+    color: rgba(250, 246, 240, 0.9);
+    font-weight: 300;
+    margin-bottom: 3rem;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+}
+
+.gold-divider-light {
+    width: 100px;
+    height: 3px;
+    background: var(--gold-gradient);
+    margin: 2rem auto 4rem;
+    border-radius: 2px;
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+}
+
+.jubilee-content {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* Timeline Section */
+.timeline {
+    background: rgba(250, 246, 240, 0.12);
+    backdrop-filter: blur(20px);
+    border-radius: 25px;
+    border: 1px solid rgba(212, 175, 55, 0.25);
+    padding: 3.5rem;
+    margin: 3rem 0;
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.2);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--gold-gradient);
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+}
+
+.timeline:hover {
+    background: rgba(250, 246, 240, 0.18);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    border-color: rgba(212, 175, 55, 0.4);
+}
+
+.timeline h2 {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    color: var(--warm-ivory);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.timeline h2::before {
+    content: '✨';
+    font-size: 2rem;
+}
+
+.timeline p {
+    font-family: var(--font-alt);
+    font-size: 1.25rem;
+    line-height: 1.9;
+    color: rgba(250, 246, 240, 0.95);
+    font-weight: 300;
+}
+
+/* Celebration Details */
+.celebration-details {
+    background: rgba(250, 246, 240, 0.12);
+    backdrop-filter: blur(20px);
+    border-radius: 25px;
+    border: 1px solid rgba(212, 175, 55, 0.25);
+    padding: 3.5rem;
+    margin: 3rem 0;
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.2);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.celebration-details::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--gold-gradient);
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+}
+
+.celebration-details:hover {
+    background: rgba(250, 246, 240, 0.18);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    border-color: rgba(212, 175, 55, 0.4);
+}
+
+.celebration-details h2 {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    color: var(--warm-ivory);
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.celebration-details h2::before {
+    content: '🎊';
+    font-size: 2rem;
+}
+
+.celebration-details ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.celebration-details li {
+    font-family: var(--font-alt);
+    font-size: 1.25rem;
+    padding: 1.25rem 0;
+    padding-left: 3rem;
+    position: relative;
+    color: rgba(250, 246, 240, 0.95);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+    transition: all 0.3s ease;
+}
+
+.celebration-details li:last-child {
+    border-bottom: none;
+}
+
+.celebration-details li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 35px;
+    height: 35px;
+    background: var(--gold-gradient);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: var(--royal-blue);
+    box-shadow: 0 4px 16px rgba(212, 175, 55, 0.4);
+}
+
+.celebration-details li:hover {
+    padding-left: 3.5rem;
+    color: var(--soft-gold);
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+    .jubilee h1 {
+        font-size: 3rem;
+    }
+
+    .jubilee-subtitle {
+        font-size: 1.2rem;
+    }
+
+    .timeline,
+    .celebration-details {
+        padding: 2.5rem;
+    }
+
+    .timeline h2,
+    .celebration-details h2 {
+        font-size: 2rem;
+    }
+
+    .timeline p,
+    .celebration-details li {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .jubilee-container {
+        padding: 5rem 1.5rem;
+    }
+
+    .jubilee h1 {
+        font-size: 2.2rem;
+    }
+
+    .timeline,
+    .celebration-details {
+        padding: 2rem;
+    }
+
+    .celebration-details li {
+        padding-left: 2.5rem;
+        font-size: 1rem;
+    }
+
+    .celebration-details li::before {
+        width: 28px;
+        height: 28px;
+        font-size: 1rem;
+    }
+}

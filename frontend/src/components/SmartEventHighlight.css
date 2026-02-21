@@ -1,0 +1,223 @@
+/* ==============================================
+   SMART HIGHLIGHT - EVENTS PAGE STYLE
+   ============================================== */
+
+.smart-highlight-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 1rem auto 3rem;
+    /* Spacing for events page */
+    padding: 0 1rem;
+    position: relative;
+    z-index: 10;
+    opacity: 0;
+    animation: fadeInSlide 0.8s ease-out forwards;
+    background: transparent;
+}
+
+@keyframes fadeInSlide {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* THE GLASS PILL CARD - Stronger visibility for Events page */
+.smart-highlight-glass {
+    /* More visible translucent overlay */
+    background: rgba(25, 20, 20, 0.4);
+    /* Darker tint for contrast against likely light theme or image */
+
+    /* Strong Backdrop Blur */
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+
+    /* Soft Gold Outline */
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    border-radius: 100px;
+
+    padding: 1rem 3.5rem 1rem 2.5rem;
+    /* Increased right padding */
+    position: relative;
+    overflow: hidden;
+
+    /* Distinct Shadow for Depth */
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.3),
+        inset 0 0 20px rgba(212, 175, 55, 0.05);
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    text-align: left;
+    gap: 2rem;
+
+    width: fit-content;
+    max-width: 900px;
+}
+
+/* Ambient Glow */
+.smart-glow-effect {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 150%;
+    height: 150%;
+    background: radial-gradient(ellipse, rgba(212, 175, 55, 0.15) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* ==============================================
+   BADGE & CONTENT
+   ============================================== */
+
+.highlight-badge-wrapper {
+    margin: 0;
+    flex-shrink: 0;
+}
+
+.highlight-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(212, 175, 55, 0.2);
+    border: 1px solid rgba(212, 175, 55, 0.5);
+    padding: 6px 16px;
+    border-radius: 30px;
+    color: #FFD700;
+    font-family: var(--font-alt);
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    white-space: nowrap;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.live-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #FFD700;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #FFD700;
+    animation: livePulse 2s infinite;
+}
+
+@keyframes livePulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.5);
+        opacity: 0.6;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.highlight-content-group {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.highlight-text-stack {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.2rem;
+}
+
+.highlight-title {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    color: #FFFFFF;
+    /* High contrast white */
+    margin: 0;
+    line-height: 1.2;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    white-space: nowrap;
+}
+
+.day-counter {
+    color: #FFD700;
+    font-size: 1.5rem;
+    margin-right: 0.5rem;
+    font-weight: 600;
+}
+
+.highlight-subtitle {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.95);
+    /* Bright white/ivory */
+    margin: 0;
+    font-weight: 400;
+    letter-spacing: 0.3px;
+}
+
+/* Actions - Just location now */
+.highlight-actions {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    padding-left: 1.5rem;
+    border-left: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.location-tag {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 500;
+}
+
+/* ==============================================
+   RESPONSIVE DESIGN
+   ============================================== */
+@media (max-width: 900px) {
+    .smart-highlight-glass {
+        padding: 1.5rem;
+        flex-direction: column;
+        gap: 1rem;
+        border-radius: 20px;
+        width: 100%;
+        max-width: 500px;
+        text-align: center;
+    }
+
+    .highlight-content-group {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .highlight-title {
+        white-space: normal;
+        font-size: 1.3rem;
+    }
+
+    .highlight-actions {
+        border-left: none;
+        padding-left: 0;
+        width: 100%;
+        justify-content: center;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: 1rem;
+    }
+}

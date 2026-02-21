@@ -1,0 +1,305 @@
+.gallery {
+    min-height: 100vh;
+    background:
+        /* Subtle paper/linen texture */
+        repeating-linear-gradient(0deg,
+            transparent,
+            transparent 1px,
+            rgba(135, 206, 235, 0.008) 1px,
+            rgba(135, 206, 235, 0.008) 2px),
+        repeating-linear-gradient(90deg,
+            transparent,
+            transparent 1px,
+            rgba(255, 229, 217, 0.008) 1px,
+            rgba(255, 229, 217, 0.008) 2px),
+        /* Soft vignette edges */
+        radial-gradient(ellipse at center,
+            transparent 0%,
+            transparent 55%,
+            rgba(135, 206, 235, 0.04) 85%,
+            rgba(135, 206, 235, 0.08) 100%),
+        /* Soft sky blue glow top */
+        radial-gradient(ellipse 1400px 700px at 50% 0%,
+            rgba(135, 206, 235, 0.22) 0%,
+            rgba(135, 206, 235, 0.15) 18%,
+            rgba(135, 206, 235, 0.08) 35%,
+            transparent 60%),
+        /* Soft peach glow bottom left */
+        radial-gradient(circle 950px at 8% 95%,
+            rgba(255, 229, 217, 0.18) 0%,
+            rgba(255, 229, 217, 0.12) 28%,
+            rgba(255, 229, 217, 0.05) 50%,
+            transparent 72%),
+        /* Soft ivory glow bottom right */
+        radial-gradient(circle 900px at 92% 90%,
+            rgba(250, 246, 240, 0.20) 0%,
+            rgba(250, 246, 240, 0.12) 32%,
+            transparent 70%),
+        /* Bright multi-stop layered gradient - sky blue → warm ivory → soft peach */
+        linear-gradient(175deg,
+            rgba(135, 206, 235, 0.15) 0%,
+            rgba(135, 206, 235, 0.10) 10%,
+            rgba(250, 246, 240, 1) 22%,
+            rgba(255, 255, 255, 0.90) 38%,
+            rgba(250, 246, 240, 1) 52%,
+            rgba(255, 250, 245, 1) 66%,
+            rgba(255, 255, 250, 1) 78%,
+            rgba(255, 229, 217, 0.12) 90%,
+            rgba(255, 229, 217, 0.18) 100%);
+    background-attachment: fixed;
+    padding: 6rem 2rem;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Subtle noise/paper texture overlay */
+.gallery::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image:
+        /* Fine paper texture */
+        repeating-linear-gradient(45deg,
+            transparent,
+            transparent 80px,
+            rgba(135, 206, 235, 0.012) 80px,
+            rgba(135, 206, 235, 0.012) 81px,
+            transparent 81px,
+            transparent 160px),
+        repeating-linear-gradient(-45deg,
+            transparent,
+            transparent 80px,
+            rgba(255, 229, 217, 0.010) 80px,
+            rgba(255, 229, 217, 0.010) 81px,
+            transparent 81px,
+            transparent 160px);
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.5;
+}
+
+/* Bright ambient light animation */
+.gallery::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+        /* Soft sky blue ambient glow */
+        radial-gradient(ellipse 1200px 600px at 50% 10%,
+            rgba(135, 206, 235, 0.18) 0%,
+            rgba(135, 206, 235, 0.12) 22%,
+            rgba(135, 206, 235, 0.05) 45%,
+            transparent 70%),
+        /* Soft peach ambient glow */
+        radial-gradient(ellipse 1000px 750px at 20% 75%,
+            rgba(255, 229, 217, 0.15) 0%,
+            rgba(255, 229, 217, 0.08) 30%,
+            rgba(255, 229, 217, 0.03) 55%,
+            transparent 75%),
+        /* Soft ivory ambient glow */
+        radial-gradient(ellipse 950px 700px at 80% 80%,
+            rgba(250, 246, 240, 0.16) 0%,
+            rgba(250, 246, 240, 0.08) 35%,
+            transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+    animation: galleryBrightPulse 11s ease-in-out infinite;
+}
+
+@keyframes galleryBrightPulse {
+
+    0%,
+    100% {
+        opacity: 0.55;
+    }
+
+    50% {
+        opacity: 0.88;
+    }
+}
+
+.gallery>* {
+    position: relative;
+    z-index: 1;
+}
+
+.gallery-header {
+    text-align: center;
+    margin-bottom: 5rem;
+}
+
+.gallery h1 {
+    font-family: var(--font-display);
+    font-size: 4rem;
+    background: linear-gradient(135deg, var(--royal-blue) 0%, var(--deep-purple) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1rem;
+}
+
+.gallery-intro {
+    font-family: var(--font-alt);
+    font-size: 1.2rem;
+    color: var(--deep-purple);
+    font-weight: 300;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.8;
+}
+
+.gallery-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.gallery-item {
+    background: rgba(250, 246, 240, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 3rem;
+    margin: 3rem 0;
+    border-radius: 25px;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    box-shadow: var(--warm-shadow);
+    transition: all 0.4s ease;
+}
+
+.gallery-item:hover {
+    box-shadow: var(--deep-shadow);
+    border-color: rgba(212, 175, 55, 0.4);
+}
+
+.gallery-item h3 {
+    font-family: var(--font-heading);
+    color: var(--deep-purple);
+    margin-bottom: 0.75rem;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.gallery-item h3::before {
+    content: '📸';
+    font-size: 1.8rem;
+}
+
+.gallery-category {
+    display: inline-block;
+    padding: 0.5rem 1.25rem;
+    background: var(--gold-gradient);
+    color: var(--royal-blue);
+    border-radius: 20px;
+    font-family: var(--font-alt);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+}
+
+.images-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.images-container img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 15px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    border: 2px solid transparent;
+    box-shadow: 0 4px 16px rgba(27, 42, 78, 0.1);
+}
+
+.images-container img:hover {
+    transform: scale(1.05) translateY(-5px);
+    box-shadow: 0 12px 32px rgba(212, 175, 55, 0.3);
+    border-color: var(--soft-gold);
+}
+
+.gallery-item p {
+    color: var(--royal-blue);
+    font-family: var(--font-alt);
+    font-size: 1.1rem;
+    line-height: 1.7;
+    font-weight: 300;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(212, 175, 55, 0.15);
+}
+
+.loading,
+.no-gallery {
+    text-align: center;
+    font-family: var(--font-alt);
+    font-size: 1.5rem;
+    color: var(--deep-purple);
+    padding: 5rem 2rem;
+    font-weight: 300;
+}
+
+/* Lightbox Effect (Optional Enhancement) */
+.image-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(27, 42, 78, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.image-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.image-overlay img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 10px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .gallery {
+        padding: 4rem 1.5rem;
+    }
+
+    .gallery h1 {
+        font-size: 2.5rem;
+    }
+
+    .gallery-item {
+        padding: 2rem;
+    }
+
+    .images-container {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .images-container img {
+        height: 250px;
+    }
+}

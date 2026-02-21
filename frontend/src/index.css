@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&family=Poppins:wght@300;400;500;600&display=swap');
+
+:root {
+    /* Primary Color Palette */
+    --royal-blue: #1B2A4E;
+    --deep-purple: #4B1D3F;
+    --soft-gold: #D4AF37;
+    --warm-ivory: #FAF6F0;
+    --muted-rose: #C47A6D;
+    --sky-blue: #87CEEB;
+    --soft-peach: #FFE5D9;
+
+    /* Gradient Variations */
+    --sacred-gradient: linear-gradient(135deg, #1B2A4E 0%, #4B1D3F 50%, #C47A6D 100%);
+    --gold-gradient: linear-gradient(135deg, #D4AF37 0%, #F4D03F 50%, #D4AF37 100%);
+    --glass-gradient: linear-gradient(135deg, rgba(250, 246, 240, 0.1) 0%, rgba(212, 175, 55, 0.05) 100%);
+
+    /* Shadows */
+    --warm-shadow: 0 8px 32px rgba(212, 175, 55, 0.15);
+    --deep-shadow: 0 12px 48px rgba(27, 42, 78, 0.25);
+    --glow-shadow: 0 0 40px rgba(212, 175, 55, 0.3);
+
+    /* Typography */
+    --font-heading: 'Cinzel', serif;
+    --font-display: 'Playfair Display', serif;
+    --font-body: 'Inter', sans-serif;
+    --font-alt: 'Poppins', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--warm-ivory);
+    color: var(--royal-blue);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+/* Smooth Scroll */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Selection */
+::selection {
+    background-color: var(--soft-gold);
+    color: var(--warm-ivory);
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--warm-ivory);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--soft-gold);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--deep-purple);
+}

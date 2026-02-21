@@ -1,0 +1,344 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(250, 246, 240, 0.85);
+  backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+  box-shadow: 0 4px 24px rgba(27, 42, 78, 0.08);
+  transition: all 0.3s ease;
+}
+
+.navbar.scrolled {
+  background: rgba(250, 246, 240, 0.95);
+  box-shadow: 0 8px 32px rgba(27, 42, 78, 0.12);
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1.25rem 3rem;
+}
+
+.navbar-logo {
+  font-family: var(--font-heading);
+  font-size: 1.75rem;
+  font-weight: 700;
+  background: var(--gold-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-decoration: none;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.navbar-logo::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--gold-gradient);
+  transition: width 0.4s ease;
+}
+
+.navbar-logo:hover::after {
+  width: 100%;
+}
+
+/* Navigation Cluster - Menu + YouTube Icon */
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 0.25rem;
+  margin: 0;
+  margin-left: auto;
+  margin-right: 1.5rem;
+  padding: 0;
+  align-items: center;
+}
+
+.nav-item {
+  position: relative;
+}
+
+.nav-link {
+  display: block;
+  padding: 0.75rem 1.5rem;
+  color: var(--royal-blue);
+  text-decoration: none;
+  font-family: var(--font-alt);
+  font-weight: 500;
+  font-size: 1rem;
+  letter-spacing: 0.3px;
+  border-radius: 25px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-link::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background: var(--gold-gradient);
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover {
+  color: var(--deep-purple);
+  background: rgba(212, 175, 55, 0.08);
+}
+
+.nav-link:hover::before {
+  width: 70%;
+}
+
+.nav-link.active {
+  color: var(--soft-gold);
+  background: rgba(212, 175, 55, 0.12);
+  font-weight: 600;
+}
+
+.nav-link.active::before {
+  width: 70%;
+}
+
+/* Navbar Icons Group - YouTube + Map */
+.navbar-icons-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+/* Shared Icon Styles */
+.navbar-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: rgba(212, 175, 55, 0.12);
+  border: 2px solid rgba(212, 175, 55, 0.3);
+  border-radius: 50%;
+  color: var(--soft-gold);
+  text-decoration: none;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.navbar-icon::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.3) 0%, transparent 70%);
+  border-radius: 50%;
+  transition: width 0.5s ease, height 0.5s ease;
+}
+
+.navbar-icon:hover::before {
+  width: 100px;
+  height: 100px;
+}
+
+.navbar-icon:hover {
+  transform: translateY(-3px);
+  background: rgba(212, 175, 55, 0.18);
+  border-color: rgba(212, 175, 55, 0.5);
+  box-shadow:
+    0 8px 24px rgba(212, 175, 55, 0.3),
+    0 0 40px rgba(212, 175, 55, 0.2);
+}
+
+.navbar-icon:active {
+  transform: translateY(-1px);
+}
+
+.navbar-icon svg {
+  width: 24px;
+  height: 24px;
+  position: relative;
+  z-index: 1;
+  transition: transform 0.3s ease;
+}
+
+.navbar-icon:hover svg {
+  transform: scale(1.1);
+}
+
+/* Specific icon hover colors (optional differentiation) */
+.navbar-youtube:hover {
+  /* YouTube red tint */
+  box-shadow:
+    0 8px 24px rgba(212, 175, 55, 0.35),
+    0 0 40px rgba(212, 175, 55, 0.25);
+}
+
+.navbar-map:hover {
+  /* Map location tint */
+  box-shadow:
+    0 8px 24px rgba(212, 175, 55, 0.35),
+    0 0 40px rgba(212, 175, 55, 0.25);
+}
+
+/* Mobile Menu Toggle */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.menu-toggle span {
+  width: 28px;
+  height: 3px;
+  background: var(--soft-gold);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Responsive */
+/* Responsive */
+@media (max-width: 968px) {
+  .navbar-container {
+    padding: 1rem 1.5rem;
+  }
+
+  .menu-toggle {
+    display: flex;
+    z-index: 1002;
+    margin-left: 0.75rem;
+    /* Space between icons and hamburger */
+  }
+
+  .nav-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    background: rgba(250, 246, 240, 0.98);
+    backdrop-filter: blur(20px);
+    padding: 2rem;
+    gap: 1.5rem;
+    transform: translateX(100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1001;
+  }
+
+  .nav-menu.active {
+    transform: translateX(0);
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .nav-item {
+    width: 100%;
+    text-align: center;
+    border-bottom: none;
+  }
+
+  .nav-link {
+    padding: 0.75rem;
+    font-size: 1.25rem;
+    display: block;
+  }
+
+  /* Icons Group - Aligned with Flexbox now */
+  .navbar-icons-group {
+    margin-left: auto;
+    /* Pushes group to the right, next to logo */
+    gap: 0.5rem;
+    position: relative;
+    top: auto;
+    right: auto;
+  }
+
+  .navbar-icon {
+    width: 40px;
+    height: 40px;
+    background: rgba(212, 175, 55, 0.1);
+  }
+
+  .navbar-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-container {
+    padding: 0.75rem 1rem;
+    /* Compact padding */
+  }
+
+  .navbar-logo {
+    font-size: 1.1rem;
+    /* Smaller font for mobile */
+    max-width: none;
+    white-space: normal;
+    /* Allow wrap if absolutely needed, but usually won't */
+    overflow: visible;
+    text-overflow: clip;
+    flex-shrink: 1;
+    /* Allow shrinking if needed */
+    margin-right: 0.5rem;
+    line-height: 1.2;
+  }
+
+  .navbar-icons-group {
+    gap: 0.5rem;
+    margin-left: auto;
+    /* Force right alignment */
+    flex-shrink: 0;
+    /* Don't shrink icons */
+  }
+
+  .navbar-icon {
+    width: 32px;
+    /* Smaller icons for mobile */
+    height: 32px;
+  }
+
+  .navbar-icon svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .menu-toggle {
+    margin-left: 0.5rem;
+    padding: 0.25rem;
+  }
+
+  .menu-toggle span {
+    width: 24px;
+    /* Smaller hamburger */
+    height: 2px;
+  }
+}
