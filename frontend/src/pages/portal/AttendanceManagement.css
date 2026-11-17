@@ -1,0 +1,125 @@
+.attendance-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+}
+
+.attendance-service-bar {
+    background: #FFFFFF;
+    border-radius: 14px;
+    padding: 1.25rem 1.5rem;
+    border: 1px solid #E2E8F0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.service-selector-group {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.service-select-item label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #64748B;
+    text-transform: uppercase;
+    margin-bottom: 0.25rem;
+}
+
+.service-select-item select,
+.service-select-item input {
+    padding: 0.6rem 0.85rem;
+    border: 1px solid #CBD5E1;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #1B2A4E;
+}
+
+.attendance-two-col {
+    display: grid;
+    grid-template-columns: 480px 1fr;
+    gap: 1.5rem;
+    align-items: start;
+}
+
+.attendance-logs-card {
+    background: #FFFFFF;
+    border-radius: 16px;
+    border: 1px solid #E2E8F0;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+    overflow: hidden;
+}
+
+.attendance-logs-header {
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid #F1F5F9;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.attendance-logs-title {
+    font-family: var(--font-heading, serif);
+    font-size: 1.15rem;
+    color: #1B2A4E;
+    margin: 0;
+}
+
+.btn-export {
+    padding: 0.5rem 1rem;
+    background: #10B981;
+    color: #FFFFFF;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-export:hover {
+    background: #059669;
+}
+
+.attendance-report-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.report-stat-card {
+    background: #FFFFFF;
+    border-radius: 12px;
+    padding: 1.25rem;
+    border: 1px solid #E2E8F0;
+}
+
+.report-stat-card h4 {
+    font-size: 0.75rem;
+    color: #64748B;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.35rem;
+}
+
+.report-stat-card .val {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #1B2A4E;
+}
+
+@media (max-width: 1024px) {
+    .attendance-two-col {
+        grid-template-columns: 1fr;
+    }
+}

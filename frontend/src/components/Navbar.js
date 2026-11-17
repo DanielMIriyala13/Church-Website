@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 import './Navbar.css';
 
 const Navbar = () => {
     const [scrolled, setScrolled] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
     const location = useLocation();
+    const { user, logout, isStaff } = useAuth();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -35,7 +37,6 @@ const Navbar = () => {
                     Bethesda Satyavakyam
                 </Link>
 
-
                 <ul className={`nav-menu ${menuOpen ? 'active' : ''}`}>
                     <li className="nav-item">
                         <Link to="/" className={`nav-link ${isActive('/')}`} onClick={closeMenu}>
@@ -58,6 +59,16 @@ const Navbar = () => {
                         </Link>
                     </li>
                     <li className="nav-item">
+                        <Link to="/announcements" className={`nav-link ${isActive('/announcements')}`} onClick={closeMenu}>
+                            Notices
+                        </Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link to="/prayers" className={`nav-link ${isActive('/prayers')}`} onClick={closeMenu}>
+                            Prayer Wall
+                        </Link>
+                    </li>
+                    <li className="nav-item">
                         <Link to="/gallery" className={`nav-link ${isActive('/gallery')}`} onClick={closeMenu}>
                             Gallery
                         </Link>
@@ -67,10 +78,23 @@ const Navbar = () => {
                             Contact
                         </Link>
                     </li>
+
+                    {/* Mobile Only Login / Portal Link */}
+                    <li className="nav-item mobile-portal-link" style={{ display: 'none' }}>
+                        {user ? (
+                            <Link to={isStaff ? '/portal/dashboard' : '/portal/my-id'} className="nav-link" onClick={closeMenu}>
+                                🏛️ Portal ({user.churchId})
+                            </Link>
+                        ) : (
+                            <Link to="/login" className="nav-link" onClick={closeMenu}>
+                                🔐 Portal Login
+                            </Link>
+                        )}
+                    </li>
                 </ul>
 
-                {/* Social/Action Icons Group */}
-                <div className="navbar-icons-group">
+                {/* Social & Portal Action Group */}
+                <div className="navbar-icons-group" style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
                     <a
                         href="https://www.youtube.com/@BCS_BaburaoMiriyala"
                         target="_blank"
@@ -94,6 +118,67 @@ const Navbar = () => {
                             <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
                         </svg>
                     </a>
+
+                    {/* Portal / Login Button */}
+                    {user ? (
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                            <Link
+                                to={isStaff ? '/portal/dashboard' : '/portal/my-id'}
+                                style={{
+                                    display: 'inline-flex',
+                                    alignItems: 'center',
+                                    gap: '0.4rem',
+                                    padding: '0.45rem 0.9rem',
+                                    background: 'linear-gradient(135deg, #1B2A4E 0%, #2A3F6D 100%)',
+                                    color: '#D4AF37',
+                                    borderRadius: '20px',
+                                    fontSize: '0.82rem',
+                                    fontWeight: '700',
+                                    textDecoration: 'none',
+                                    border: '1px solid #D4AF37',
+                                    boxShadow: '0 2px 10px rgba(212, 175, 55, 0.2)'
+                                }}
+                            >
+                                <span>🏛️</span>
+                                <span>{user.churchId}</span>
+                            </Link>
+                            <button
+                                onClick={logout}
+                                style={{
+                                    background: 'none',
+                                    border: 'none',
+                                    cursor: 'pointer',
+                                    fontSize: '0.8rem',
+                                    color: '#64748B',
+                                    padding: '0.25rem 0.5rem'
+                                }}
+                                title="Sign Out"
+                            >
+                                🚪
+                            </button>
+                        </div>
+                    ) : (
+                        <Link
+                            to="/login"
+                            style={{
+                                display: 'inline-flex',
+                                alignItems: 'center',
+                                gap: '0.4rem',
+                                padding: '0.45rem 1rem',
+                                background: 'linear-gradient(135deg, #D4AF37 0%, #F4D03F 100%)',
+                                color: '#1B2A4E',
+                                borderRadius: '20px',
+                                fontSize: '0.82rem',
+                                fontWeight: '700',
+                                textDecoration: 'none',
+                                boxShadow: '0 2px 10px rgba(212, 175, 55, 0.3)',
+                                transition: 'all 0.2s ease'
+                            }}
+                        >
+                            <span>🔐</span>
+                            <span>Portal Login</span>
+                        </Link>
+                    )}
                 </div>
 
                 <button className="menu-toggle" onClick={toggleMenu} aria-label="Toggle menu">
