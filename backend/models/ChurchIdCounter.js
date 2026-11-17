@@ -25,3 +25,4 @@ churchIdCounterSchema.statics.getNextChurchId = async function(prefix = 'BSC', y
 };
 
 module.exports = mongoose.model('ChurchIdCounter', churchIdCounterSchema);
+

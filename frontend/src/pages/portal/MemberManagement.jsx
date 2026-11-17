@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import PortalLayout from '../../components/PortalLayout';
 import ChurchIdCard from '../../components/ChurchIdCard';
 import {
@@ -46,7 +46,7 @@ const MemberManagement = () => {
     const [formMsg, setFormMsg] = useState({ type: '', text: '' });
     const [saving, setSaving] = useState(false);
 
-    const loadData = async () => {
+    const loadData = useCallback(async () => {
         try {
             setLoading(true);
             const params = {};
@@ -66,11 +66,11 @@ const MemberManagement = () => {
         } finally {
             setLoading(false);
         }
-    };
+    }, [search, selectedDept, selectedStatus]);
 
     useEffect(() => {
         loadData();
-    }, [search, selectedDept, selectedStatus]);
+    }, [loadData]);
 
     const openRegisterModal = async () => {
         setIsEditing(false);

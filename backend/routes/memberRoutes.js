@@ -328,3 +328,4 @@ router.delete('/:id', protect, authorize('Super Admin', 'Church Admin'), async (
 });
 
 module.exports = router;
+

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import PortalLayout from '../../components/PortalLayout';
 import QrAttendanceScanner from '../../components/QrAttendanceScanner';
 import {
@@ -32,7 +32,7 @@ const AttendanceManagement = () => {
     const [selectedDept, setSelectedDept] = useState('');
     const [loading, setLoading] = useState(true);
 
-    const loadAttendance = async () => {
+    const loadAttendance = useCallback(async () => {
         try {
             setLoading(true);
             const params = {
@@ -55,11 +55,11 @@ const AttendanceManagement = () => {
         } finally {
             setLoading(false);
         }
-    };
+    }, [selectedDate, selectedService, selectedDept]);
 
     useEffect(() => {
         loadAttendance();
-    }, [selectedDate, selectedService, selectedDept]);
+    }, [loadAttendance]);
 
     const handleCheckInSuccess = () => {
         loadAttendance();
@@ -279,3 +279,4 @@ const AttendanceManagement = () => {
 };
 
 export default AttendanceManagement;
+

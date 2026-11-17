@@ -197,3 +197,4 @@ router.delete('/:id', protect, authorize('Super Admin', 'Church Admin', 'Pastor'
 });
 
 module.exports = router;
+

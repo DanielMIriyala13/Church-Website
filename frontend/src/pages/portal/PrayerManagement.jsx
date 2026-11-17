@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import PortalLayout from '../../components/PortalLayout';
 import {
     getManagementPrayers,
@@ -23,7 +23,7 @@ const PrayerManagement = () => {
     const [notes, setNotes] = useState('');
     const [saving, setSaving] = useState(false);
 
-    const loadPrayers = async () => {
+    const loadPrayers = useCallback(async () => {
         try {
             setLoading(true);
             const params = {};
@@ -40,11 +40,11 @@ const PrayerManagement = () => {
         } finally {
             setLoading(false);
         }
-    };
+    }, [filterStatus, filterPrivacy, search]);
 
     useEffect(() => {
         loadPrayers();
-    }, [filterStatus, filterPrivacy, search]);
+    }, [loadPrayers]);
 
     const openStatusModal = (prayer) => {
         setActivePrayer(prayer);

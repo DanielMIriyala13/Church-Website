@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import PortalLayout from '../../components/PortalLayout';
 import {
     getAdminAnnouncements,
@@ -41,7 +41,7 @@ const AnnouncementManagement = () => {
     });
     const [saving, setSaving] = useState(false);
 
-    const loadAnnouncements = async () => {
+    const loadAnnouncements = useCallback(async () => {
         try {
             setLoading(true);
             const params = {};
@@ -57,11 +57,11 @@ const AnnouncementManagement = () => {
         } finally {
             setLoading(false);
         }
-    };
+    }, [statusFilter, search]);
 
     useEffect(() => {
         loadAnnouncements();
-    }, [statusFilter, search]);
+    }, [loadAnnouncements]);
 
     const openCreateModal = () => {
         setIsEditing(false);
@@ -481,3 +481,4 @@ const AnnouncementManagement = () => {
 };
 
 export default AnnouncementManagement;
+

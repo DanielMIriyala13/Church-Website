@@ -241,3 +241,4 @@ const QrAttendanceScanner = ({ onCheckInSuccess, selectedService, selectedDate }
 };
 
 export default QrAttendanceScanner;
+

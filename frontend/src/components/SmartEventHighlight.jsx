@@ -9,7 +9,6 @@ const SmartEventHighlight = () => {
             const now = new Date();
             const month = now.getMonth(); // 0 = January
             const day = now.getDate();
-            const year = now.getFullYear();
 
             // Only active for Jan 24, 25, 26
             if (month !== 0) return;

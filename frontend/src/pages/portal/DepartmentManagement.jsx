@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import PortalLayout from '../../components/PortalLayout';
 import {
     getDepartments,
@@ -38,7 +38,7 @@ const DepartmentManagement = () => {
     const [formMsg, setFormMsg] = useState({ type: '', text: '' });
     const [assignMemberId, setAssignMemberId] = useState('');
 
-    const loadData = async () => {
+    const loadData = useCallback(async () => {
         try {
             setLoading(true);
             const [dRes, mRes] = await Promise.all([
@@ -52,11 +52,11 @@ const DepartmentManagement = () => {
         } finally {
             setLoading(false);
         }
-    };
+    }, []);
 
     useEffect(() => {
         loadData();
-    }, []);
+    }, [loadData]);
 
     const openCreateModal = () => {
         setIsEditing(false);
